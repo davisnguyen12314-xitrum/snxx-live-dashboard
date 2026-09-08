@@ -1,20 +1,36 @@
 <!DOCTYPE html>
 
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
 
 <meta name="viewport"
-   content="width=device-width, initial-scale=1.0">
+      content="width=device-width, initial-scale=1.0">
 
 <title>Binance Live Tracker</title>
 
+
+<!-- ===================================================== -->
+<!-- TRADINGVIEW LIGHTWEIGHT CHARTS -->
+<!-- ===================================================== -->
+
+<script
+    src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js">
+</script>
+
+
 <style>
+
+/* ===================================================== */
+/* GENERAL */
+/* ===================================================== */
 
 * {
     box-sizing: border-box;
 }
+
 
 body {
 
@@ -31,15 +47,17 @@ body {
 
 }
 
+
 .container {
 
-    max-width: 1000px;
+    max-width: 1200px;
 
     margin: auto;
 
     padding: 25px;
 
 }
+
 
 h1 {
 
@@ -51,6 +69,11 @@ h1 {
 
 }
 
+
+/* ===================================================== */
+/* CARDS */
+/* ===================================================== */
+
 .cards {
 
     display: grid;
@@ -61,6 +84,7 @@ h1 {
     gap: 20px;
 
 }
+
 
 .card {
 
@@ -75,6 +99,7 @@ h1 {
 
 }
 
+
 .symbol {
 
     font-size: 22px;
@@ -84,6 +109,7 @@ h1 {
     margin-bottom: 15px;
 
 }
+
 
 .price {
 
@@ -95,6 +121,7 @@ h1 {
 
 }
 
+
 .live {
 
     font-size: 14px;
@@ -103,6 +130,11 @@ h1 {
 
 }
 
+
+/* ===================================================== */
+/* INPUT */
+/* ===================================================== */
+
 .input-label {
 
     font-size: 14px;
@@ -110,6 +142,7 @@ h1 {
     color: #aaa;
 
 }
+
 
 input {
 
@@ -133,6 +166,11 @@ input {
 
 }
 
+
+/* ===================================================== */
+/* BUTTON */
+/* ===================================================== */
+
 button {
 
     width: 100%;
@@ -153,9 +191,12 @@ button {
 
     cursor: pointer;
 
-    transition: background 0.2s;
+    transition:
+        background 0.2s,
+        border 0.2s;
 
 }
+
 
 button:hover {
 
@@ -163,11 +204,78 @@ button:hover {
 
 }
 
+
 button:active {
 
     background: #444c59;
 
 }
+
+
+/* ===================================================== */
+/* TIMEFRAME BUTTONS */
+/* ===================================================== */
+
+.timeframes {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(7, 1fr);
+
+    gap: 5px;
+
+    margin-top: 10px;
+
+    margin-bottom: 10px;
+
+}
+
+
+.timeframes button {
+
+    margin: 0;
+
+    padding: 8px 4px;
+
+    font-size: 12px;
+
+}
+
+
+.timeframes button.active {
+
+    background: #2962ff;
+
+    border-color: #2962ff;
+
+    font-weight: bold;
+
+}
+
+
+/* ===================================================== */
+/* CHART */
+/* ===================================================== */
+
+.chart {
+
+    width: 100%;
+
+    height: 350px;
+
+    margin-top: 10px;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+
+}
+
+
+/* ===================================================== */
+/* CHANGE */
+/* ===================================================== */
 
 .change {
 
@@ -179,6 +287,11 @@ button:active {
 
 }
 
+
+/* ===================================================== */
+/* UPDATED */
+/* ===================================================== */
+
 .updated {
 
     margin-top: 20px;
@@ -189,7 +302,53 @@ button:active {
 
 }
 
+
+/* ===================================================== */
+/* CHART STATUS */
+/* ===================================================== */
+
+.chart-status {
+
+    color: #888;
+
+    font-size: 12px;
+
+    margin-top: 5px;
+
+}
+
+
+/* ===================================================== */
+/* FOOTER */
+/* ===================================================== */
+
+.footer {
+
+    text-align: center;
+
+    color: #666;
+
+    font-size: 12px;
+
+    margin-top: 30px;
+
+    padding-bottom: 20px;
+
+}
+
+
+/* ===================================================== */
+/* MOBILE */
+/* ===================================================== */
+
 @media(max-width: 700px) {
+
+    .container {
+
+        padding: 15px;
+
+    }
+
 
     .cards {
 
@@ -197,11 +356,13 @@ button:active {
 
     }
 
+
     h1 {
 
         font-size: 26px;
 
     }
+
 
     .price {
 
@@ -209,125 +370,383 @@ button:active {
 
     }
 
+
+    .chart {
+
+        height: 300px;
+
+    }
+
+
+    .timeframes {
+
+        grid-template-columns:
+            repeat(4, 1fr);
+
+        gap: 5px;
+
+    }
+
 }
+
 
 </style>
 
 </head>
 
+
 <body>
 
+
 <div class="container">
+
 
 <h1>
     Binance Live Tracker
 </h1>
 
+
 <div class="cards">
 
-<!-- ================================================= -->
 
+<!-- ===================================================== -->
 <!-- SNXX -->
-
-<!-- ================================================= -->
+<!-- ===================================================== -->
 
 <div class="card">
+
 
 <div class="symbol">
     SNXXBUSDT
 </div>
 
+
 <div id="snxxPrice"
      class="price">
+
     Connecting...
+
 </div>
+
 
 <div id="snxxStatus"
      class="live">
+
     ● Connecting
+
 </div>
+
+
+<!-- LAST SOLD PRICE -->
 
 <div class="input-label">
+
     Last Sold Price
+
 </div>
 
-<input
-id="snxxSold"
-type="number"
-step="any"
-placeholder="Enter last sold price"
 
+<input
+    id="snxxSold"
+    type="number"
+    step="any"
+    placeholder="Enter last sold price"
 >
 
+
 <button id="clearSnxx">
+
     Clear Saved Price
+
 </button>
+
+
+<!-- PERCENT CHANGE -->
 
 <div id="snxxChange"
      class="change">
+
     --
+
 </div>
+
 
 <div id="snxxUpdated"
      class="updated">
+
     Waiting for Binance...
-</div>
 
 </div>
+
 
 <!-- ================================================= -->
+<!-- SNXX CHART -->
+<!-- ================================================= -->
 
+<div class="input-label"
+     style="margin-top:25px;">
+
+    Live Chart
+
+</div>
+
+
+<div class="timeframes"
+     id="snxxTimeframes">
+
+
+<button
+    data-interval="1m"
+    class="active">
+
+    1m
+
+</button>
+
+
+<button
+    data-interval="5m">
+
+    5m
+
+</button>
+
+
+<button
+    data-interval="15m">
+
+    15m
+
+</button>
+
+
+<button
+    data-interval="30m">
+
+    30m
+
+</button>
+
+
+<button
+    data-interval="1h">
+
+    1h
+
+</button>
+
+
+<button
+    data-interval="4h">
+
+    4h
+
+</button>
+
+
+<button
+    data-interval="1d">
+
+    1D
+
+</button>
+
+
+</div>
+
+
+<div id="snxxChart"
+     class="chart">
+
+</div>
+
+
+<div id="snxxChartStatus"
+     class="chart-status">
+
+    Loading chart...
+
+</div>
+
+
+</div>
+
+
+<!-- ===================================================== -->
 <!-- SNDKB -->
-
-<!-- ================================================= -->
+<!-- ===================================================== -->
 
 <div class="card">
+
 
 <div class="symbol">
     SNDKBUSDT
 </div>
 
+
 <div id="sndkbPrice"
      class="price">
+
     Connecting...
+
 </div>
+
 
 <div id="sndkbStatus"
      class="live">
+
     ● Connecting
+
 </div>
+
+
+<!-- LAST SOLD PRICE -->
 
 <div class="input-label">
+
     Last Sold Price
+
 </div>
 
-<input
-id="sndkbSold"
-type="number"
-step="any"
-placeholder="Enter last sold price"
 
+<input
+    id="sndkbSold"
+    type="number"
+    step="any"
+    placeholder="Enter last sold price"
 >
 
+
 <button id="clearSndkb">
+
     Clear Saved Price
+
 </button>
+
+
+<!-- PERCENT CHANGE -->
 
 <div id="sndkbChange"
      class="change">
+
     --
+
 </div>
+
 
 <div id="sndkbUpdated"
      class="updated">
+
     Waiting for Binance...
-</div>
 
 </div>
 
-</div>
+
+<!-- ================================================= -->
+<!-- SNDKB CHART -->
+<!-- ================================================= -->
+
+<div class="input-label"
+     style="margin-top:25px;">
+
+    Live Chart
 
 </div>
+
+
+<div class="timeframes"
+     id="sndkbTimeframes">
+
+
+<button
+    data-interval="1m"
+    class="active">
+
+    1m
+
+</button>
+
+
+<button
+    data-interval="5m">
+
+    5m
+
+</button>
+
+
+<button
+    data-interval="15m">
+
+    15m
+
+</button>
+
+
+<button
+    data-interval="30m">
+
+    30m
+
+</button>
+
+
+<button
+    data-interval="1h">
+
+    1h
+
+</button>
+
+
+<button
+    data-interval="4h">
+
+    4h
+
+</button>
+
+
+<button
+    data-interval="1d">
+
+    1D
+
+</button>
+
+
+</div>
+
+
+<div id="sndkbChart"
+     class="chart">
+
+</div>
+
+
+<div id="sndkbChartStatus"
+     class="chart-status">
+
+    Loading chart...
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+<div class="footer">
+
+    Charts powered by TradingView Lightweight Charts
+
+</div>
+
+
+</div>
+
 
 <script>
 
@@ -342,15 +761,14 @@ let sndkbPrice = null;
 
 
 // =====================================================
-// LOAD SAVED PRICES FROM LOCAL STORAGE
+// LOAD SAVED PRICES
 // =====================================================
-
-// Load SNXX
 
 const savedSNXX =
     localStorage.getItem(
         "snxxLastSoldPrice"
     );
+
 
 if (savedSNXX !== null) {
 
@@ -361,12 +779,11 @@ if (savedSNXX !== null) {
 }
 
 
-// Load SNDKB
-
 const savedSNDKB =
     localStorage.getItem(
         "sndkbLastSoldPrice"
     );
+
 
 if (savedSNDKB !== null) {
 
@@ -396,7 +813,7 @@ function formatPrice(price) {
 
 
 // =====================================================
-// CALCULATE PERCENT CHANGE
+// CALCULATE CHANGE
 // =====================================================
 
 function calculateChange(
@@ -405,18 +822,25 @@ function calculateChange(
 ) {
 
     if (
+
         livePrice === null ||
+
         soldPrice === null ||
+
         soldPrice <= 0
+
     ) {
 
         return null;
 
     }
 
+
     return (
+
         (livePrice - soldPrice)
         / soldPrice
+
     ) * 100;
 
 }
@@ -443,25 +867,51 @@ function updateSNXX() {
         );
 
 
+    const element =
+        document.getElementById(
+            "snxxChange"
+        );
+
+
     if (change === null) {
 
-        document.getElementById(
-            "snxxChange"
-        ).innerText = "--";
+        element.innerText = "--";
 
-    } else {
+        return;
 
-        const sign =
-            change >= 0
-                ? "+"
-                : "";
+    }
 
-        document.getElementById(
-            "snxxChange"
-        ).innerText =
-            sign +
-            change.toFixed(2) +
-            "%";
+
+    const sign =
+        change >= 0
+            ? "+"
+            : "";
+
+
+    element.innerText =
+        sign +
+        change.toFixed(2) +
+        "%";
+
+
+    if (change > 0) {
+
+        element.style.color =
+            "#00c853";
+
+    }
+
+    else if (change < 0) {
+
+        element.style.color =
+            "#ff5252";
+
+    }
+
+    else {
+
+        element.style.color =
+            "white";
 
     }
 
@@ -489,25 +939,51 @@ function updateSNDKB() {
         );
 
 
+    const element =
+        document.getElementById(
+            "sndkbChange"
+        );
+
+
     if (change === null) {
 
-        document.getElementById(
-            "sndkbChange"
-        ).innerText = "--";
+        element.innerText = "--";
 
-    } else {
+        return;
 
-        const sign =
-            change >= 0
-                ? "+"
-                : "";
+    }
 
-        document.getElementById(
-            "sndkbChange"
-        ).innerText =
-            sign +
-            change.toFixed(2) +
-            "%";
+
+    const sign =
+        change >= 0
+            ? "+"
+            : "";
+
+
+    element.innerText =
+        sign +
+        change.toFixed(2) +
+        "%";
+
+
+    if (change > 0) {
+
+        element.style.color =
+            "#00c853";
+
+    }
+
+    else if (change < 0) {
+
+        element.style.color =
+            "#ff5252";
+
+    }
+
+    else {
+
+        element.style.color =
+            "white";
 
     }
 
@@ -515,7 +991,7 @@ function updateSNDKB() {
 
 
 // =====================================================
-// SNXX INPUT EVENT
+// SNXX INPUT
 // =====================================================
 
 document.getElementById(
@@ -524,13 +1000,12 @@ document.getElementById(
     "input",
     function() {
 
-        // Save SNXX price
         localStorage.setItem(
             "snxxLastSoldPrice",
             this.value
         );
 
-        // Recalculate percentage
+
         updateSNXX();
 
     }
@@ -538,7 +1013,7 @@ document.getElementById(
 
 
 // =====================================================
-// SNDKB INPUT EVENT
+// SNDKB INPUT
 // =====================================================
 
 document.getElementById(
@@ -547,13 +1022,12 @@ document.getElementById(
     "input",
     function() {
 
-        // Save SNDKB price
         localStorage.setItem(
             "sndkbLastSoldPrice",
             this.value
         );
 
-        // Recalculate percentage
+
         updateSNDKB();
 
     }
@@ -561,7 +1035,7 @@ document.getElementById(
 
 
 // =====================================================
-// CLEAR SNXX SAVED PRICE
+// CLEAR SNXX
 // =====================================================
 
 document.getElementById(
@@ -570,17 +1044,16 @@ document.getElementById(
     "click",
     function() {
 
-        // Delete from localStorage
         localStorage.removeItem(
             "snxxLastSoldPrice"
         );
 
-        // Clear input
+
         document.getElementById(
             "snxxSold"
         ).value = "";
 
-        // Reset percentage
+
         updateSNXX();
 
     }
@@ -588,7 +1061,7 @@ document.getElementById(
 
 
 // =====================================================
-// CLEAR SNDKB SAVED PRICE
+// CLEAR SNDKB
 // =====================================================
 
 document.getElementById(
@@ -597,17 +1070,16 @@ document.getElementById(
     "click",
     function() {
 
-        // Delete from localStorage
         localStorage.removeItem(
             "sndkbLastSoldPrice"
         );
 
-        // Clear input
+
         document.getElementById(
             "sndkbSold"
         ).value = "";
 
-        // Reset percentage
+
         updateSNDKB();
 
     }
@@ -615,7 +1087,7 @@ document.getElementById(
 
 
 // =====================================================
-// BINANCE SNXXBUSDT
+// BINANCE LIVE TICKER - SNXX
 // =====================================================
 
 const snxxWS =
@@ -684,7 +1156,7 @@ snxxWS.onclose = function() {
 
 
 // =====================================================
-// BINANCE SNDKBUSDT
+// BINANCE LIVE TICKER - SNDKB
 // =====================================================
 
 const sndkbWS =
@@ -752,7 +1224,739 @@ sndkbWS.onclose = function() {
 };
 
 
+// =====================================================
+// CHART CONFIGURATION
+// =====================================================
+
+const chartOptions = {
+
+    layout: {
+
+        background: {
+
+            type: "solid",
+
+            color: "#181b22"
+
+        },
+
+        textColor: "#aaaaaa"
+
+    },
+
+
+    grid: {
+
+        vertLines: {
+
+            color: "#252a33"
+
+        },
+
+        horzLines: {
+
+            color: "#252a33"
+
+        }
+
+    },
+
+
+    rightPriceScale: {
+
+        borderColor: "#444444"
+
+    },
+
+
+    timeScale: {
+
+        borderColor: "#444444",
+
+        timeVisible: true,
+
+        secondsVisible: false
+
+    },
+
+
+    crosshair: {
+
+        mode:
+            LightweightCharts.CrosshairMode.Normal
+
+    }
+
+};
+
+
+// =====================================================
+// CREATE SNXX CHART
+// =====================================================
+
+const snxxChart =
+    LightweightCharts.createChart(
+
+        document.getElementById(
+            "snxxChart"
+        ),
+
+        chartOptions
+
+    );
+
+
+let snxxSeries =
+    snxxChart.addSeries(
+        LightweightCharts.CandlestickSeries,
+        {
+
+            upColor: "#00c853",
+
+            downColor: "#ff5252",
+
+            borderVisible: false,
+
+            wickUpColor: "#00c853",
+
+            wickDownColor: "#ff5252"
+
+        }
+    );
+
+
+// =====================================================
+// CREATE SNDKB CHART
+// =====================================================
+
+const sndkbChart =
+    LightweightCharts.createChart(
+
+        document.getElementById(
+            "sndkbChart"
+        ),
+
+        chartOptions
+
+    );
+
+
+let sndkbSeries =
+    sndkbChart.addSeries(
+        LightweightCharts.CandlestickSeries,
+        {
+
+            upColor: "#00c853",
+
+            downColor: "#ff5252",
+
+            borderVisible: false,
+
+            wickUpColor: "#00c853",
+
+            wickDownColor: "#ff5252"
+
+        }
+    );
+
+
+// =====================================================
+// CHART WEBSOCKETS
+// =====================================================
+
+let snxxChartWS = null;
+
+let sndkbChartWS = null;
+
+
+// =====================================================
+// LOAD BINANCE KLINES
+// =====================================================
+
+async function loadKlines(
+
+    symbol,
+
+    interval,
+
+    series,
+
+    chart,
+
+    statusElement
+
+) {
+
+    try {
+
+        statusElement.innerText =
+            "Loading " +
+            interval +
+            " chart...";
+
+
+        const url =
+
+            "https://api.binance.com/api/v3/klines" +
+
+            "?symbol=" +
+            symbol +
+
+            "&interval=" +
+            interval +
+
+            "&limit=300";
+
+
+        const response =
+            await fetch(url);
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Binance API error"
+            );
+
+        }
+
+
+        const data =
+            await response.json();
+
+
+        const candles =
+            data.map(
+                function(item) {
+
+                    return {
+
+                        time:
+                            Math.floor(
+                                item[0] / 1000
+                            ),
+
+                        open:
+                            parseFloat(item[1]),
+
+                        high:
+                            parseFloat(item[2]),
+
+                        low:
+                            parseFloat(item[3]),
+
+                        close:
+                            parseFloat(item[4])
+
+                    };
+
+                }
+            );
+
+
+        series.setData(candles);
+
+
+        chart
+            .timeScale()
+            .fitContent();
+
+
+        statusElement.innerText =
+            "● LIVE " +
+            interval;
+
+
+    }
+
+    catch(error) {
+
+        console.error(
+            symbol +
+            " chart error:",
+            error
+        );
+
+
+        statusElement.innerText =
+            "● Chart connection error";
+
+    }
+
+}
+
+
+// =====================================================
+// START SNXX CHART WEBSOCKET
+// =====================================================
+
+function startSNXXChartWS(
+    interval
+) {
+
+
+    // Close previous websocket
+
+    if (
+        snxxChartWS !== null
+    ) {
+
+        snxxChartWS.close();
+
+    }
+
+
+    const url =
+
+        "wss://stream.binance.com:9443/ws/" +
+
+        "snxxbusdt@kline_" +
+
+        interval;
+
+
+    snxxChartWS =
+        new WebSocket(url);
+
+
+    snxxChartWS.onopen =
+        function() {
+
+            console.log(
+                "SNXX chart connected:",
+                interval
+            );
+
+        };
+
+
+    snxxChartWS.onmessage =
+        function(event) {
+
+            const data =
+                JSON.parse(
+                    event.data
+                );
+
+
+            const k =
+                data.k;
+
+
+            const candle = {
+
+                time:
+                    Math.floor(
+                        k.t / 1000
+                    ),
+
+                open:
+                    parseFloat(k.o),
+
+                high:
+                    parseFloat(k.h),
+
+                low:
+                    parseFloat(k.l),
+
+                close:
+                    parseFloat(k.c)
+
+            };
+
+
+            snxxSeries.update(
+                candle
+            );
+
+        };
+
+
+    snxxChartWS.onerror =
+        function(error) {
+
+            console.error(
+                "SNXX chart WebSocket error",
+                error
+            );
+
+        };
+
+
+    snxxChartWS.onclose =
+        function() {
+
+            console.log(
+                "SNXX chart WebSocket closed"
+            );
+
+        };
+
+}
+
+
+// =====================================================
+// START SNDKB CHART WEBSOCKET
+// =====================================================
+
+function startSNDKBChartWS(
+    interval
+) {
+
+
+    // Close previous websocket
+
+    if (
+        sndkbChartWS !== null
+    ) {
+
+        sndkbChartWS.close();
+
+    }
+
+
+    const url =
+
+        "wss://stream.binance.com:9443/ws/" +
+
+        "sndkbusdt@kline_" +
+
+        interval;
+
+
+    sndkbChartWS =
+        new WebSocket(url);
+
+
+    sndkbChartWS.onopen =
+        function() {
+
+            console.log(
+                "SNDKB chart connected:",
+                interval
+            );
+
+        };
+
+
+    sndkbChartWS.onmessage =
+        function(event) {
+
+            const data =
+                JSON.parse(
+                    event.data
+                );
+
+
+            const k =
+                data.k;
+
+
+            const candle = {
+
+                time:
+                    Math.floor(
+                        k.t / 1000
+                    ),
+
+                open:
+                    parseFloat(k.o),
+
+                high:
+                    parseFloat(k.h),
+
+                low:
+                    parseFloat(k.l),
+
+                close:
+                    parseFloat(k.c)
+
+            };
+
+
+            sndkbSeries.update(
+                candle
+            );
+
+        };
+
+
+    sndkbChartWS.onerror =
+        function(error) {
+
+            console.error(
+                "SNDKB chart WebSocket error",
+                error
+            );
+
+        };
+
+
+    sndkbChartWS.onclose =
+        function() {
+
+            console.log(
+                "SNDKB chart WebSocket closed"
+            );
+
+        };
+
+}
+
+
+// =====================================================
+// LOAD SNXX CHART
+// =====================================================
+
+async function changeSNXXTimeframe(
+    interval
+) {
+
+
+    // Stop old websocket
+
+    if (
+        snxxChartWS !== null
+    ) {
+
+        snxxChartWS.close();
+
+    }
+
+
+    // Load historical data
+
+    await loadKlines(
+
+        "SNXXBUSDT",
+
+        interval,
+
+        snxxSeries,
+
+        snxxChart,
+
+        document.getElementById(
+            "snxxChartStatus"
+        )
+
+    );
+
+
+    // Start live websocket
+
+    startSNXXChartWS(
+        interval
+    );
+
+}
+
+
+// =====================================================
+// LOAD SNDKB CHART
+// =====================================================
+
+async function changeSNDKBTimeframe(
+    interval
+) {
+
+
+    // Stop old websocket
+
+    if (
+        sndkbChartWS !== null
+    ) {
+
+        sndkbChartWS.close();
+
+    }
+
+
+    // Load historical data
+
+    await loadKlines(
+
+        "SNDKBUSDT",
+
+        interval,
+
+        sndkbSeries,
+
+        sndkbChart,
+
+        document.getElementById(
+            "sndkbChartStatus"
+        )
+
+    );
+
+
+    // Start live websocket
+
+    startSNDKBChartWS(
+        interval
+    );
+
+}
+
+
+// =====================================================
+// SNXX TIMEFRAME BUTTONS
+// =====================================================
+
+document
+    .querySelectorAll(
+        "#snxxTimeframes button"
+    )
+    .forEach(
+        function(button) {
+
+            button.addEventListener(
+                "click",
+                async function() {
+
+                    document
+                        .querySelectorAll(
+                            "#snxxTimeframes button"
+                        )
+                        .forEach(
+                            function(btn) {
+
+                                btn.classList.remove(
+                                    "active"
+                                );
+
+                            }
+                        );
+
+
+                    this.classList.add(
+                        "active"
+                    );
+
+
+                    const interval =
+                        this.dataset.interval;
+
+
+                    await changeSNXXTimeframe(
+                        interval
+                    );
+
+                }
+            );
+
+        }
+    );
+
+
+// =====================================================
+// SNDKB TIMEFRAME BUTTONS
+// =====================================================
+
+document
+    .querySelectorAll(
+        "#sndkbTimeframes button"
+    )
+    .forEach(
+        function(button) {
+
+            button.addEventListener(
+                "click",
+                async function() {
+
+                    document
+                        .querySelectorAll(
+                            "#sndkbTimeframes button"
+                        )
+                        .forEach(
+                            function(btn) {
+
+                                btn.classList.remove(
+                                    "active"
+                                );
+
+                            }
+                        );
+
+
+                    this.classList.add(
+                        "active"
+                    );
+
+
+                    const interval =
+                        this.dataset.interval;
+
+
+                    await changeSNDKBTimeframe(
+                        interval
+                    );
+
+                }
+            );
+
+        }
+    );
+
+
+// =====================================================
+// INITIALIZE CHARTS
+// =====================================================
+
+changeSNXXTimeframe(
+    "1m"
+);
+
+
+changeSNDKBTimeframe(
+    "1m"
+);
+
+
+// =====================================================
+// RESPONSIVE CHART SIZE
+// =====================================================
+
+window.addEventListener(
+    "resize",
+    function() {
+
+        const snxxContainer =
+            document.getElementById(
+                "snxxChart"
+            );
+
+
+        const sndkbContainer =
+            document.getElementById(
+                "sndkbChart"
+            );
+
+
+        snxxChart.resize(
+
+            snxxContainer.clientWidth,
+
+            snxxContainer.clientHeight
+
+        );
+
+
+        sndkbChart.resize(
+
+            sndkbContainer.clientWidth,
+
+            sndkbContainer.clientHeight
+
+        );
+
+    }
+);
+
+
 </script>
+
 
 </body>
 
