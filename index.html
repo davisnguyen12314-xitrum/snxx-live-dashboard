@@ -1,11 +1,12 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 
 <meta charset="UTF-8">
 
 <meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
+   content="width=device-width, initial-scale=1.0">
 
 <title>Binance Live Tracker</title>
 
@@ -118,7 +119,7 @@ input {
 
     margin-top: 8px;
 
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 
     border-radius: 10px;
 
@@ -129,6 +130,42 @@ input {
     color: white;
 
     font-size: 18px;
+
+}
+
+button {
+
+    width: 100%;
+
+    padding: 12px;
+
+    margin-bottom: 20px;
+
+    border-radius: 10px;
+
+    border: 1px solid #444;
+
+    background: #252a33;
+
+    color: white;
+
+    font-size: 15px;
+
+    cursor: pointer;
+
+    transition: background 0.2s;
+
+}
+
+button:hover {
+
+    background: #333a46;
+
+}
+
+button:active {
+
+    background: #444c59;
 
 }
 
@@ -178,9 +215,7 @@ input {
 
 </head>
 
-
 <body>
-
 
 <div class="container">
 
@@ -188,12 +223,12 @@ input {
     Binance Live Tracker
 </h1>
 
-
 <div class="cards">
 
-
 <!-- ================================================= -->
+
 <!-- SNXX -->
+
 <!-- ================================================= -->
 
 <div class="card">
@@ -212,24 +247,26 @@ input {
     ● Connecting
 </div>
 
-
 <div class="input-label">
     Last Sold Price
 </div>
 
 <input
-    id="snxxSold"
-    type="number"
-    step="any"
-    placeholder="Enter last sold price"
+id="snxxSold"
+type="number"
+step="any"
+placeholder="Enter last sold price"
+
 >
 
+<button id="clearSnxx">
+    Clear Saved Price
+</button>
 
 <div id="snxxChange"
      class="change">
     --
 </div>
-
 
 <div id="snxxUpdated"
      class="updated">
@@ -238,9 +275,10 @@ input {
 
 </div>
 
-
 <!-- ================================================= -->
+
 <!-- SNDKB -->
+
 <!-- ================================================= -->
 
 <div class="card">
@@ -259,24 +297,26 @@ input {
     ● Connecting
 </div>
 
-
 <div class="input-label">
     Last Sold Price
 </div>
 
 <input
-    id="sndkbSold"
-    type="number"
-    step="any"
-    placeholder="Enter last sold price"
+id="sndkbSold"
+type="number"
+step="any"
+placeholder="Enter last sold price"
+
 >
 
+<button id="clearSndkb">
+    Clear Saved Price
+</button>
 
 <div id="sndkbChange"
      class="change">
     --
 </div>
-
 
 <div id="sndkbUpdated"
      class="updated">
@@ -285,11 +325,9 @@ input {
 
 </div>
 
-
 </div>
 
 </div>
-
 
 <script>
 
@@ -301,6 +339,42 @@ input {
 let snxxPrice = null;
 
 let sndkbPrice = null;
+
+
+// =====================================================
+// LOAD SAVED PRICES FROM LOCAL STORAGE
+// =====================================================
+
+// Load SNXX
+
+const savedSNXX =
+    localStorage.getItem(
+        "snxxLastSoldPrice"
+    );
+
+if (savedSNXX !== null) {
+
+    document.getElementById(
+        "snxxSold"
+    ).value = savedSNXX;
+
+}
+
+
+// Load SNDKB
+
+const savedSNDKB =
+    localStorage.getItem(
+        "sndkbLastSoldPrice"
+    );
+
+if (savedSNDKB !== null) {
+
+    document.getElementById(
+        "sndkbSold"
+    ).value = savedSNDKB;
+
+}
 
 
 // =====================================================
@@ -441,22 +515,102 @@ function updateSNDKB() {
 
 
 // =====================================================
-// INPUT EVENTS
+// SNXX INPUT EVENT
 // =====================================================
 
 document.getElementById(
     "snxxSold"
 ).addEventListener(
     "input",
-    updateSNXX
+    function() {
+
+        // Save SNXX price
+        localStorage.setItem(
+            "snxxLastSoldPrice",
+            this.value
+        );
+
+        // Recalculate percentage
+        updateSNXX();
+
+    }
 );
 
+
+// =====================================================
+// SNDKB INPUT EVENT
+// =====================================================
 
 document.getElementById(
     "sndkbSold"
 ).addEventListener(
     "input",
-    updateSNDKB
+    function() {
+
+        // Save SNDKB price
+        localStorage.setItem(
+            "sndkbLastSoldPrice",
+            this.value
+        );
+
+        // Recalculate percentage
+        updateSNDKB();
+
+    }
+);
+
+
+// =====================================================
+// CLEAR SNXX SAVED PRICE
+// =====================================================
+
+document.getElementById(
+    "clearSnxx"
+).addEventListener(
+    "click",
+    function() {
+
+        // Delete from localStorage
+        localStorage.removeItem(
+            "snxxLastSoldPrice"
+        );
+
+        // Clear input
+        document.getElementById(
+            "snxxSold"
+        ).value = "";
+
+        // Reset percentage
+        updateSNXX();
+
+    }
+);
+
+
+// =====================================================
+// CLEAR SNDKB SAVED PRICE
+// =====================================================
+
+document.getElementById(
+    "clearSndkb"
+).addEventListener(
+    "click",
+    function() {
+
+        // Delete from localStorage
+        localStorage.removeItem(
+            "sndkbLastSoldPrice"
+        );
+
+        // Clear input
+        document.getElementById(
+            "sndkbSold"
+        ).value = "";
+
+        // Reset percentage
+        updateSNDKB();
+
+    }
 );
 
 
@@ -599,7 +753,6 @@ sndkbWS.onclose = function() {
 
 
 </script>
-
 
 </body>
 
