@@ -31,7 +31,6 @@
     box-sizing: border-box;
 }
 
-
 body {
 
     margin: 0;
@@ -44,7 +43,6 @@ body {
     background: #0f1115;
 
     color: white;
-
 }
 
 
@@ -55,7 +53,6 @@ body {
     margin: auto;
 
     padding: 25px;
-
 }
 
 
@@ -66,7 +63,6 @@ h1 {
     margin-bottom: 30px;
 
     font-size: 32px;
-
 }
 
 
@@ -82,7 +78,6 @@ h1 {
         repeat(2, 1fr);
 
     gap: 20px;
-
 }
 
 
@@ -96,7 +91,6 @@ h1 {
 
     box-shadow:
         0 5px 20px rgba(0,0,0,0.3);
-
 }
 
 
@@ -107,7 +101,6 @@ h1 {
     font-weight: bold;
 
     margin-bottom: 15px;
-
 }
 
 
@@ -118,7 +111,6 @@ h1 {
     font-weight: bold;
 
     margin-bottom: 10px;
-
 }
 
 
@@ -127,7 +119,6 @@ h1 {
     font-size: 14px;
 
     margin-bottom: 25px;
-
 }
 
 
@@ -140,7 +131,6 @@ h1 {
     font-size: 14px;
 
     color: #aaa;
-
 }
 
 
@@ -163,7 +153,28 @@ input {
     color: white;
 
     font-size: 18px;
+}
 
+
+select {
+
+    width: 100%;
+
+    padding: 14px;
+
+    margin-top: 8px;
+
+    margin-bottom: 10px;
+
+    border-radius: 10px;
+
+    border: 1px solid #444;
+
+    background: #0f1115;
+
+    color: white;
+
+    font-size: 18px;
 }
 
 
@@ -194,21 +205,18 @@ button {
     transition:
         background 0.2s,
         border 0.2s;
-
 }
 
 
 button:hover {
 
     background: #333a46;
-
 }
 
 
 button:active {
 
     background: #444c59;
-
 }
 
 
@@ -228,7 +236,6 @@ button:active {
     margin-top: 10px;
 
     margin-bottom: 10px;
-
 }
 
 
@@ -239,7 +246,6 @@ button:active {
     padding: 8px 4px;
 
     font-size: 12px;
-
 }
 
 
@@ -250,7 +256,6 @@ button:active {
     border-color: #2962ff;
 
     font-weight: bold;
-
 }
 
 
@@ -269,7 +274,6 @@ button:active {
     border-radius: 10px;
 
     overflow: hidden;
-
 }
 
 
@@ -284,7 +288,6 @@ button:active {
     font-weight: bold;
 
     margin-top: 10px;
-
 }
 
 
@@ -299,7 +302,6 @@ button:active {
     color: #888;
 
     font-size: 13px;
-
 }
 
 
@@ -314,7 +316,251 @@ button:active {
     font-size: 12px;
 
     margin-top: 5px;
+}
 
+
+/* ===================================================== */
+/* TRANSACTION HISTORY */
+/* ===================================================== */
+
+.transaction-section {
+
+    margin-top: 35px;
+
+    background: #181b22;
+
+    border-radius: 18px;
+
+    padding: 25px;
+
+    box-shadow:
+        0 5px 20px rgba(0,0,0,0.3);
+}
+
+
+.transaction-title {
+
+    font-size: 24px;
+
+    font-weight: bold;
+
+    margin-bottom: 20px;
+}
+
+
+.transaction-controls {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 15px;
+
+    margin-bottom: 5px;
+}
+
+
+.trade-buttons {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 10px;
+
+    margin-top: 5px;
+}
+
+
+.trade-buttons button {
+
+    font-weight: bold;
+
+    margin-bottom: 15px;
+}
+
+
+.buy-button {
+
+    background: #064d2b;
+
+    border-color: #087f46;
+}
+
+
+.buy-button:hover {
+
+    background: #087f46;
+}
+
+
+.sell-button {
+
+    background: #5a1717;
+
+    border-color: #8f2525;
+}
+
+
+.sell-button:hover {
+
+    background: #8f2525;
+}
+
+
+/* ===================================================== */
+/* CURRENT HOLDING */
+/* ===================================================== */
+
+.current-holding {
+
+    background: #0f1115;
+
+    border-radius: 12px;
+
+    padding: 18px;
+
+    margin-top: 5px;
+
+    margin-bottom: 20px;
+}
+
+
+.current-holding-label {
+
+    color: #888;
+
+    font-size: 13px;
+}
+
+
+.current-holding-value {
+
+    font-size: 28px;
+
+    font-weight: bold;
+
+    margin-top: 5px;
+}
+
+
+/* ===================================================== */
+/* TRANSACTION TABLE */
+/* ===================================================== */
+
+.transaction-table-container {
+
+    overflow-x: auto;
+}
+
+
+.transaction-table {
+
+    width: 100%;
+
+    border-collapse: collapse;
+
+    min-width: 900px;
+}
+
+
+.transaction-table th {
+
+    color: #888;
+
+    font-size: 12px;
+
+    font-weight: normal;
+
+    padding: 12px 8px;
+
+    border-bottom: 1px solid #444;
+
+    text-align: right;
+}
+
+
+.transaction-table th:first-child,
+.transaction-table th:nth-child(2),
+.transaction-table th:nth-child(3) {
+
+    text-align: left;
+}
+
+
+.transaction-table td {
+
+    padding: 12px 8px;
+
+    border-bottom: 1px solid #252a33;
+
+    text-align: right;
+
+    font-size: 13px;
+}
+
+
+.transaction-table td:first-child,
+.transaction-table td:nth-child(2),
+.transaction-table td:nth-child(3) {
+
+    text-align: left;
+}
+
+
+.buy-text {
+
+    color: #00c853;
+
+    font-weight: bold;
+}
+
+
+.sell-text {
+
+    color: #ff5252;
+
+    font-weight: bold;
+}
+
+
+.delete-transaction {
+
+    width: auto;
+
+    padding: 5px 9px;
+
+    margin: 0;
+
+    font-size: 11px;
+
+    background: #252a33;
+}
+
+
+.delete-transaction:hover {
+
+    background: #5a1717;
+}
+
+
+.clear-history {
+
+    margin-top: 15px;
+
+    background: #252a33;
+}
+
+
+.history-empty {
+
+    text-align: center !important;
+
+    color: #666;
+
+    padding: 30px !important;
 }
 
 
@@ -333,7 +579,6 @@ button:active {
     margin-top: 30px;
 
     padding-bottom: 20px;
-
 }
 
 
@@ -346,35 +591,30 @@ button:active {
     .container {
 
         padding: 15px;
-
     }
 
 
     .cards {
 
         grid-template-columns: 1fr;
-
     }
 
 
     h1 {
 
         font-size: 26px;
-
     }
 
 
     .price {
 
         font-size: 34px;
-
     }
 
 
     .chart {
 
         height: 300px;
-
     }
 
 
@@ -384,11 +624,21 @@ button:active {
             repeat(4, 1fr);
 
         gap: 5px;
+    }
 
+
+    .transaction-controls {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .trade-buttons {
+
+        grid-template-columns: 1fr 1fr;
     }
 
 }
-
 
 </style>
 
@@ -405,6 +655,10 @@ button:active {
     Binance Live Tracker
 </h1>
 
+
+<!-- ===================================================== -->
+<!-- ETF CARDS -->
+<!-- ===================================================== -->
 
 <div class="cards">
 
@@ -479,9 +733,7 @@ button:active {
 </div>
 
 
-<!-- ================================================= -->
 <!-- SNXX CHART -->
-<!-- ================================================= -->
 
 <div class="input-label"
      style="margin-top:25px;">
@@ -580,7 +832,9 @@ button:active {
 
 
 <div class="symbol">
+
     SNDKBUSDT
+
 </div>
 
 
@@ -642,9 +896,7 @@ button:active {
 </div>
 
 
-<!-- ================================================= -->
 <!-- SNDKB CHART -->
-<!-- ================================================= -->
 
 <div class="input-label"
      style="margin-top:25px;">
@@ -738,6 +990,201 @@ button:active {
 </div>
 
 
+<!-- ===================================================== -->
+<!-- TRANSACTION HISTORY -->
+<!-- ===================================================== -->
+
+<div class="transaction-section">
+
+
+<div class="transaction-title">
+
+    Transaction History
+
+</div>
+
+
+<!-- TRANSACTION INPUTS -->
+
+<div class="transaction-controls">
+
+
+<div>
+
+<div class="input-label">
+
+    ETF
+
+</div>
+
+
+<select id="tradeSymbol">
+
+    <option value="SNXX">
+        SNXXBUSDT
+    </option>
+
+    <option value="SNDKB">
+        SNDKBUSDT
+    </option>
+
+</select>
+
+</div>
+
+
+<div>
+
+<div class="input-label">
+
+    Quantity
+
+</div>
+
+
+<input
+    id="tradeQuantity"
+    type="number"
+    min="0"
+    step="any"
+    placeholder="Enter ETF quantity"
+>
+
+</div>
+
+
+</div>
+
+
+<!-- BUY / SELL -->
+
+<div class="trade-buttons">
+
+
+<button
+    id="buyTrade"
+    class="buy-button">
+
+    BUY
+
+</button>
+
+
+<button
+    id="sellTrade"
+    class="sell-button">
+
+    SELL
+
+</button>
+
+
+</div>
+
+
+<!-- CURRENT HOLDING -->
+
+<div class="current-holding">
+
+
+<div class="current-holding-label">
+
+    Current ETF Holding
+
+</div>
+
+
+<div
+    id="currentHolding"
+    class="current-holding-value">
+
+    SNXX: 0
+
+</div>
+
+
+</div>
+
+
+<!-- TRANSACTION TABLE -->
+
+<div class="transaction-table-container">
+
+
+<table class="transaction-table">
+
+
+<thead>
+
+<tr>
+
+<th>
+    Date / Time
+</th>
+
+<th>
+    ETF
+</th>
+
+<th>
+    Type
+</th>
+
+<th>
+    Price
+</th>
+
+<th>
+    Qty Bought
+</th>
+
+<th>
+    Qty Sold
+</th>
+
+<th>
+    Difference
+</th>
+
+<th>
+    Holding
+</th>
+
+<th>
+</th>
+
+</tr>
+
+</thead>
+
+
+<tbody id="transactionHistory">
+
+</tbody>
+
+
+</table>
+
+
+</div>
+
+
+<button
+    id="clearTransactionHistory"
+    class="clear-history">
+
+    Clear Transaction History
+
+</button>
+
+
+</div>
+
+
+<!-- ===================================================== -->
+<!-- FOOTER -->
+<!-- ===================================================== -->
+
 <div class="footer">
 
     Charts powered by TradingView Lightweight Charts
@@ -760,8 +1207,13 @@ let snxxPrice = null;
 let sndkbPrice = null;
 
 
+let snxxLastUpdate = null;
+
+let sndkbLastUpdate = null;
+
+
 // =====================================================
-// LOAD SAVED PRICES
+// LOAD SAVED LAST SOLD PRICES
 // =====================================================
 
 const savedSNXX =
@@ -813,6 +1265,23 @@ function formatPrice(price) {
 
 
 // =====================================================
+// FORMAT QUANTITY
+// =====================================================
+
+function formatQuantity(value) {
+
+    return Number(value)
+        .toLocaleString(
+            "en-US",
+            {
+                maximumFractionDigits: 8
+            }
+        );
+
+}
+
+
+// =====================================================
 // CALCULATE CHANGE
 // =====================================================
 
@@ -822,13 +1291,9 @@ function calculateChange(
 ) {
 
     if (
-
         livePrice === null ||
-
         soldPrice === null ||
-
         soldPrice <= 0
-
     ) {
 
         return null;
@@ -837,10 +1302,8 @@ function calculateChange(
 
 
     return (
-
         (livePrice - soldPrice)
         / soldPrice
-
     ) * 100;
 
 }
@@ -991,7 +1454,7 @@ function updateSNDKB() {
 
 
 // =====================================================
-// SNXX INPUT
+// SNXX LAST SOLD PRICE INPUT
 // =====================================================
 
 document.getElementById(
@@ -1013,7 +1476,7 @@ document.getElementById(
 
 
 // =====================================================
-// SNDKB INPUT
+// SNDKB LAST SOLD PRICE INPUT
 // =====================================================
 
 document.getElementById(
@@ -1035,7 +1498,7 @@ document.getElementById(
 
 
 // =====================================================
-// CLEAR SNXX
+// CLEAR SNXX LAST SOLD PRICE
 // =====================================================
 
 document.getElementById(
@@ -1061,7 +1524,7 @@ document.getElementById(
 
 
 // =====================================================
-// CLEAR SNDKB
+// CLEAR SNDKB LAST SOLD PRICE
 // =====================================================
 
 document.getElementById(
@@ -1096,63 +1559,75 @@ const snxxWS =
     );
 
 
-snxxWS.onopen = function() {
+snxxWS.onopen =
+    function() {
 
-    document.getElementById(
-        "snxxStatus"
-    ).innerText =
-        "● LIVE";
+        document.getElementById(
+            "snxxStatus"
+        ).innerText =
+            "● LIVE";
 
-};
-
-
-snxxWS.onmessage = function(event) {
-
-    const data =
-        JSON.parse(event.data);
+    };
 
 
-    snxxPrice =
-        parseFloat(data.c);
+snxxWS.onmessage =
+    function(event) {
+
+        const data =
+            JSON.parse(event.data);
 
 
-    document.getElementById(
-        "snxxPrice"
-    ).innerText =
-        "$" +
-        formatPrice(snxxPrice);
+        snxxPrice =
+            parseFloat(data.c);
 
 
-    document.getElementById(
-        "snxxUpdated"
-    ).innerText =
-        "Last update: " +
-        new Date().toLocaleTimeString();
+        snxxLastUpdate =
+            new Date();
 
 
-    updateSNXX();
-
-};
-
-
-snxxWS.onerror = function() {
-
-    document.getElementById(
-        "snxxStatus"
-    ).innerText =
-        "● Connection error";
-
-};
+        document.getElementById(
+            "snxxPrice"
+        ).innerText =
+            "$" +
+            formatPrice(snxxPrice);
 
 
-snxxWS.onclose = function() {
+        document.getElementById(
+            "snxxUpdated"
+        ).innerText =
+            "Last update: " +
+            snxxLastUpdate.toLocaleString();
 
-    document.getElementById(
-        "snxxStatus"
-    ).innerText =
-        "● Disconnected";
 
-};
+        updateSNXX();
+
+
+        // Update holding display if SNXX is selected
+        updateCurrentHolding();
+
+    };
+
+
+snxxWS.onerror =
+    function() {
+
+        document.getElementById(
+            "snxxStatus"
+        ).innerText =
+            "● Connection error";
+
+    };
+
+
+snxxWS.onclose =
+    function() {
+
+        document.getElementById(
+            "snxxStatus"
+        ).innerText =
+            "● Disconnected";
+
+    };
 
 
 // =====================================================
@@ -1165,63 +1640,1008 @@ const sndkbWS =
     );
 
 
-sndkbWS.onopen = function() {
+sndkbWS.onopen =
+    function() {
+
+        document.getElementById(
+            "sndkbStatus"
+        ).innerText =
+            "● LIVE";
+
+    };
+
+
+sndkbWS.onmessage =
+    function(event) {
+
+        const data =
+            JSON.parse(event.data);
+
+
+        sndkbPrice =
+            parseFloat(data.c);
+
+
+        sndkbLastUpdate =
+            new Date();
+
+
+        document.getElementById(
+            "sndkbPrice"
+        ).innerText =
+            "$" +
+            formatPrice(sndkbPrice);
+
+
+        document.getElementById(
+            "sndkbUpdated"
+        ).innerText =
+            "Last update: " +
+            sndkbLastUpdate.toLocaleString();
+
+
+        updateSNDKB();
+
+
+        // Update holding display if SNDKB is selected
+        updateCurrentHolding();
+
+    };
+
+
+sndkbWS.onerror =
+    function() {
+
+        document.getElementById(
+            "sndkbStatus"
+        ).innerText =
+            "● Connection error";
+
+    };
+
+
+sndkbWS.onclose =
+    function() {
+
+        document.getElementById(
+            "sndkbStatus"
+        ).innerText =
+            "● Disconnected";
+
+    };
+
+
+// =====================================================
+// TRANSACTION HISTORY
+// =====================================================
+
+const TRANSACTION_STORAGE_KEY =
+    "etfTransactionHistory";
+
+
+// =====================================================
+// GET TRANSACTIONS
+// =====================================================
+
+function getTransactions() {
+
+    const saved =
+        localStorage.getItem(
+            TRANSACTION_STORAGE_KEY
+        );
+
+
+    if (!saved) {
+
+        return [];
+
+    }
+
+
+    try {
+
+        const transactions =
+            JSON.parse(saved);
+
+
+        if (!Array.isArray(transactions)) {
+
+            return [];
+
+        }
+
+
+        return transactions;
+
+    }
+
+    catch(error) {
+
+        console.error(
+            "Transaction history error:",
+            error
+        );
+
+
+        return [];
+
+    }
+
+}
+
+
+// =====================================================
+// SAVE TRANSACTIONS
+// =====================================================
+
+function saveTransactions(
+    transactions
+) {
+
+    localStorage.setItem(
+        TRANSACTION_STORAGE_KEY,
+        JSON.stringify(transactions)
+    );
+
+}
+
+
+// =====================================================
+// FORMAT TRANSACTION DATE
+// =====================================================
+
+function formatTransactionDate(
+    date
+) {
+
+    return new Date(date)
+        .toLocaleString();
+
+}
+
+
+// =====================================================
+// GET CURRENT PRICE
+// =====================================================
+
+function getCurrentPrice(
+    symbol
+) {
+
+    if (symbol === "SNXX") {
+
+        return snxxPrice;
+
+    }
+
+
+    if (symbol === "SNDKB") {
+
+        return sndkbPrice;
+
+    }
+
+
+    return null;
+
+}
+
+
+// =====================================================
+// GET LAST UPDATE
+// =====================================================
+
+function getLastUpdate(
+    symbol
+) {
+
+    if (symbol === "SNXX") {
+
+        return snxxLastUpdate;
+
+    }
+
+
+    if (symbol === "SNDKB") {
+
+        return sndkbLastUpdate;
+
+    }
+
+
+    return null;
+
+}
+
+
+// =====================================================
+// CALCULATE HOLDING
+// =====================================================
+
+function calculateHolding(
+    transactions,
+    symbol
+) {
+
+    let holding = 0;
+
+
+    transactions.forEach(
+        function(transaction) {
+
+            if (
+                transaction.symbol !== symbol
+            ) {
+
+                return;
+
+            }
+
+
+            if (
+                transaction.type === "BUY"
+            ) {
+
+                holding +=
+                    Number(transaction.quantity);
+
+            }
+
+
+            else if (
+                transaction.type === "SELL"
+            ) {
+
+                holding -=
+                    Number(transaction.quantity);
+
+            }
+
+        }
+    );
+
+
+    return holding;
+
+}
+
+
+// =====================================================
+// GET ALL HOLDINGS
+// =====================================================
+
+function calculateAllHoldings(
+    transactions
+) {
+
+    const holdings = {
+
+        SNXX: 0,
+
+        SNDKB: 0
+
+    };
+
+
+    transactions.forEach(
+        function(transaction) {
+
+            const quantity =
+                Number(transaction.quantity);
+
+
+            if (
+                transaction.symbol === "SNXX"
+            ) {
+
+                if (
+                    transaction.type === "BUY"
+                ) {
+
+                    holdings.SNXX += quantity;
+
+                }
+
+                else if (
+                    transaction.type === "SELL"
+                ) {
+
+                    holdings.SNXX -= quantity;
+
+                }
+
+            }
+
+
+            if (
+                transaction.symbol === "SNDKB"
+            ) {
+
+                if (
+                    transaction.type === "BUY"
+                ) {
+
+                    holdings.SNDKB += quantity;
+
+                }
+
+                else if (
+                    transaction.type === "SELL"
+                ) {
+
+                    holdings.SNDKB -= quantity;
+
+                }
+
+            }
+
+        }
+    );
+
+
+    return holdings;
+
+}
+
+
+// =====================================================
+// UPDATE CURRENT HOLDING
+// =====================================================
+
+function updateCurrentHolding() {
+
+    const symbol =
+        document.getElementById(
+            "tradeSymbol"
+        ).value;
+
+
+    const transactions =
+        getTransactions();
+
+
+    const holding =
+        calculateHolding(
+            transactions,
+            symbol
+        );
+
 
     document.getElementById(
-        "sndkbStatus"
+        "currentHolding"
     ).innerText =
-        "● LIVE";
+        symbol +
+        ": " +
+        formatQuantity(holding);
 
-};
-
-
-sndkbWS.onmessage = function(event) {
-
-    const data =
-        JSON.parse(event.data);
+}
 
 
-    sndkbPrice =
-        parseFloat(data.c);
+// =====================================================
+// RECORD TRANSACTION
+// =====================================================
 
+function recordTransaction(
+    type
+) {
+
+    const symbol =
+        document.getElementById(
+            "tradeSymbol"
+        ).value;
+
+
+    const quantity =
+        parseFloat(
+            document.getElementById(
+                "tradeQuantity"
+            ).value
+        );
+
+
+    // Validate quantity
+
+    if (
+        isNaN(quantity) ||
+        !isFinite(quantity) ||
+        quantity <= 0
+    ) {
+
+        alert(
+            "Please enter a valid ETF quantity."
+        );
+
+        return;
+
+    }
+
+
+    // Get current live price
+
+    const price =
+        getCurrentPrice(symbol);
+
+
+    if (
+        price === null ||
+        !isFinite(price)
+    ) {
+
+        alert(
+            "Live price is not available yet."
+        );
+
+        return;
+
+    }
+
+
+    // Get latest update time
+
+    const lastUpdate =
+        getLastUpdate(symbol);
+
+
+    if (
+        lastUpdate === null
+    ) {
+
+        alert(
+            "Last update time is not available yet."
+        );
+
+        return;
+
+    }
+
+
+    // Get history
+
+    const transactions =
+        getTransactions();
+
+
+    // Current holding
+
+    const currentHolding =
+        calculateHolding(
+            transactions,
+            symbol
+        );
+
+
+    // Prevent selling more than holding
+
+    if (
+        type === "SELL" &&
+        quantity > currentHolding
+    ) {
+
+        alert(
+            "You cannot sell more ETF than you currently hold.\n\n" +
+            symbol +
+            " holding: " +
+            formatQuantity(currentHolding)
+        );
+
+        return;
+
+    }
+
+
+    // Create transaction
+
+    const transaction = {
+
+        id:
+            Date.now() +
+            Math.random(),
+
+        date:
+            lastUpdate.toISOString(),
+
+        symbol:
+            symbol,
+
+        type:
+            type,
+
+        price:
+            price,
+
+        quantity:
+            quantity
+
+    };
+
+
+    transactions.push(
+        transaction
+    );
+
+
+    saveTransactions(
+        transactions
+    );
+
+
+    // Clear quantity input
 
     document.getElementById(
-        "sndkbPrice"
-    ).innerText =
-        "$" +
-        formatPrice(sndkbPrice);
+        "tradeQuantity"
+    ).value = "";
 
 
-    document.getElementById(
-        "sndkbUpdated"
-    ).innerText =
-        "Last update: " +
-        new Date().toLocaleTimeString();
+    // Refresh table
+
+    renderTransactionHistory();
+
+}
 
 
-    updateSNDKB();
+// =====================================================
+// DELETE TRANSACTION
+// =====================================================
 
-};
+function deleteTransaction(
+    id
+) {
 
-
-sndkbWS.onerror = function() {
-
-    document.getElementById(
-        "sndkbStatus"
-    ).innerText =
-        "● Connection error";
-
-};
+    const transactions =
+        getTransactions();
 
 
-sndkbWS.onclose = function() {
+    const filtered =
+        transactions.filter(
+            function(transaction) {
 
-    document.getElementById(
-        "sndkbStatus"
-    ).innerText =
-        "● Disconnected";
+                return transaction.id !== id;
 
-};
+            }
+        );
+
+
+    saveTransactions(
+        filtered
+    );
+
+
+    renderTransactionHistory();
+
+}
+
+
+// =====================================================
+// ESCAPE HTML
+// =====================================================
+
+function escapeHTML(
+    value
+) {
+
+    return String(value)
+
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
+
+
+// =====================================================
+// RENDER TRANSACTION HISTORY
+// =====================================================
+
+function renderTransactionHistory() {
+
+    const transactions =
+        getTransactions();
+
+
+    const tbody =
+        document.getElementById(
+            "transactionHistory"
+        );
+
+
+    tbody.innerHTML = "";
+
+
+    // Empty history
+
+    if (
+        transactions.length === 0
+    ) {
+
+        const row =
+            document.createElement("tr");
+
+
+        row.innerHTML = `
+
+            <td
+                colspan="9"
+                class="history-empty">
+
+                No transactions yet.
+
+            </td>
+
+        `;
+
+
+        tbody.appendChild(
+            row
+        );
+
+
+        updateCurrentHolding();
+
+        return;
+
+    }
+
+
+    // Calculate holdings progressively
+
+    const holdings = {
+
+        SNXX: 0,
+
+        SNDKB: 0
+
+    };
+
+
+    // Display newest transaction first,
+    // but calculate holdings in original order.
+
+    transactions.forEach(
+        function(transaction) {
+
+            const quantity =
+                Number(transaction.quantity);
+
+
+            if (
+                transaction.type === "BUY"
+            ) {
+
+                holdings[
+                    transaction.symbol
+                ] += quantity;
+
+            }
+
+
+            else if (
+                transaction.type === "SELL"
+            ) {
+
+                holdings[
+                    transaction.symbol
+                ] -= quantity;
+
+            }
+
+
+            transaction.calculatedHolding =
+                holdings[
+                    transaction.symbol
+                ];
+
+        }
+    );
+
+
+    // Newest first
+
+    const displayTransactions =
+        [...transactions].reverse();
+
+
+    displayTransactions.forEach(
+        function(transaction) {
+
+            const row =
+                document.createElement("tr");
+
+
+            const isBuy =
+                transaction.type === "BUY";
+
+
+            const typeClass =
+                isBuy
+                    ? "buy-text"
+                    : "sell-text";
+
+
+            const difference =
+                isBuy
+                    ? "+" +
+                      formatQuantity(
+                          transaction.quantity
+                      )
+                    : "-" +
+                      formatQuantity(
+                          transaction.quantity
+                      );
+
+
+            const qtyBought =
+                isBuy
+                    ? formatQuantity(
+                        transaction.quantity
+                      )
+                    : "-";
+
+
+            const qtySold =
+                !isBuy
+                    ? formatQuantity(
+                        transaction.quantity
+                      )
+                    : "-";
+
+
+            const holding =
+                transaction.calculatedHolding;
+
+
+            row.innerHTML = `
+
+                <td>
+                    ${escapeHTML(
+                        formatTransactionDate(
+                            transaction.date
+                        )
+                    )}
+                </td>
+
+                <td>
+                    ${escapeHTML(
+                        transaction.symbol
+                    )}
+                </td>
+
+                <td class="${typeClass}">
+                    ${escapeHTML(
+                        transaction.type
+                    )}
+                </td>
+
+                <td>
+                    $${formatPrice(
+                        transaction.price
+                    )}
+                </td>
+
+                <td>
+                    ${qtyBought}
+                </td>
+
+                <td>
+                    ${qtySold}
+                </td>
+
+                <td class="${typeClass}">
+                    ${difference}
+                </td>
+
+                <td>
+                    ${formatQuantity(
+                        holding
+                    )}
+                </td>
+
+                <td>
+
+                    <button
+                        class="delete-transaction"
+                        data-id="${transaction.id}">
+
+                        X
+
+                    </button>
+
+                </td>
+
+            `;
+
+
+            tbody.appendChild(
+                row
+            );
+
+        }
+    );
+
+
+    // Add delete listeners
+
+    tbody
+        .querySelectorAll(
+            ".delete-transaction"
+        )
+        .forEach(
+            function(button) {
+
+                button.addEventListener(
+                    "click",
+                    function() {
+
+                        const id =
+                            Number(
+                                this.dataset.id
+                            );
+
+
+                        deleteTransaction(
+                            id
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+
+    updateCurrentHolding();
+
+}
+
+
+// =====================================================
+// BUY BUTTON
+// =====================================================
+
+document.getElementById(
+    "buyTrade"
+).addEventListener(
+    "click",
+    function() {
+
+        recordTransaction(
+            "BUY"
+        );
+
+    }
+);
+
+
+// =====================================================
+// SELL BUTTON
+// =====================================================
+
+document.getElementById(
+    "sellTrade"
+).addEventListener(
+    "click",
+    function() {
+
+        recordTransaction(
+            "SELL"
+        );
+
+    }
+);
+
+
+// =====================================================
+// ETF SELECTOR
+// =====================================================
+
+document.getElementById(
+    "tradeSymbol"
+).addEventListener(
+    "change",
+    function() {
+
+        updateCurrentHolding();
+
+    }
+);
+
+
+// =====================================================
+// ENTER KEY = BUY
+// =====================================================
+
+document.getElementById(
+    "tradeQuantity"
+).addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key === "Enter"
+        ) {
+
+            recordTransaction(
+                "BUY"
+            );
+
+        }
+
+    }
+);
+
+
+// =====================================================
+// CLEAR ALL TRANSACTION HISTORY
+// =====================================================
+
+document.getElementById(
+    "clearTransactionHistory"
+).addEventListener(
+    "click",
+    function() {
+
+        const transactions =
+            getTransactions();
+
+
+        if (
+            transactions.length === 0
+        ) {
+
+            return;
+
+        }
+
+
+        const confirmed =
+            confirm(
+                "Are you sure you want to delete ALL transaction history?"
+            );
+
+
+        if (!confirmed) {
+
+            return;
+
+        }
+
+
+        localStorage.removeItem(
+            TRANSACTION_STORAGE_KEY
+        );
+
+
+        renderTransactionHistory();
+
+    }
+);
+
+
+// =====================================================
+// INITIAL TRANSACTION HISTORY
+// =====================================================
+
+renderTransactionHistory();
 
 
 // =====================================================
@@ -1283,7 +2703,9 @@ const chartOptions = {
     crosshair: {
 
         mode:
-            LightweightCharts.CrosshairMode.Normal
+            LightweightCharts
+                .CrosshairMode
+                .Normal
 
     }
 
@@ -1308,7 +2730,9 @@ const snxxChart =
 
 let snxxSeries =
     snxxChart.addSeries(
+
         LightweightCharts.CandlestickSeries,
+
         {
 
             upColor: "#00c853",
@@ -1322,6 +2746,7 @@ let snxxSeries =
             wickDownColor: "#ff5252"
 
         }
+
     );
 
 
@@ -1343,7 +2768,9 @@ const sndkbChart =
 
 let sndkbSeries =
     sndkbChart.addSeries(
+
         LightweightCharts.CandlestickSeries,
+
         {
 
             upColor: "#00c853",
@@ -1357,6 +2784,7 @@ let sndkbSeries =
             wickDownColor: "#ff5252"
 
         }
+
     );
 
 
@@ -1437,16 +2865,24 @@ async function loadKlines(
                             ),
 
                         open:
-                            parseFloat(item[1]),
+                            parseFloat(
+                                item[1]
+                            ),
 
                         high:
-                            parseFloat(item[2]),
+                            parseFloat(
+                                item[2]
+                            ),
 
                         low:
-                            parseFloat(item[3]),
+                            parseFloat(
+                                item[3]
+                            ),
 
                         close:
-                            parseFloat(item[4])
+                            parseFloat(
+                                item[4]
+                            )
 
                     };
 
@@ -1454,7 +2890,9 @@ async function loadKlines(
             );
 
 
-        series.setData(candles);
+        series.setData(
+            candles
+        );
 
 
         chart
@@ -1466,8 +2904,8 @@ async function loadKlines(
             "● LIVE " +
             interval;
 
-
     }
+
 
     catch(error) {
 
@@ -1493,9 +2931,6 @@ async function loadKlines(
 function startSNXXChartWS(
     interval
 ) {
-
-
-    // Close previous websocket
 
     if (
         snxxChartWS !== null
@@ -1551,16 +2986,24 @@ function startSNXXChartWS(
                     ),
 
                 open:
-                    parseFloat(k.o),
+                    parseFloat(
+                        k.o
+                    ),
 
                 high:
-                    parseFloat(k.h),
+                    parseFloat(
+                        k.h
+                    ),
 
                 low:
-                    parseFloat(k.l),
+                    parseFloat(
+                        k.l
+                    ),
 
                 close:
-                    parseFloat(k.c)
+                    parseFloat(
+                        k.c
+                    )
 
             };
 
@@ -1602,9 +3045,6 @@ function startSNXXChartWS(
 function startSNDKBChartWS(
     interval
 ) {
-
-
-    // Close previous websocket
 
     if (
         sndkbChartWS !== null
@@ -1660,16 +3100,24 @@ function startSNDKBChartWS(
                     ),
 
                 open:
-                    parseFloat(k.o),
+                    parseFloat(
+                        k.o
+                    ),
 
                 high:
-                    parseFloat(k.h),
+                    parseFloat(
+                        k.h
+                    ),
 
                 low:
-                    parseFloat(k.l),
+                    parseFloat(
+                        k.l
+                    ),
 
                 close:
-                    parseFloat(k.c)
+                    parseFloat(
+                        k.c
+                    )
 
             };
 
@@ -1712,9 +3160,6 @@ async function changeSNXXTimeframe(
     interval
 ) {
 
-
-    // Stop old websocket
-
     if (
         snxxChartWS !== null
     ) {
@@ -1723,8 +3168,6 @@ async function changeSNXXTimeframe(
 
     }
 
-
-    // Load historical data
 
     await loadKlines(
 
@@ -1743,8 +3186,6 @@ async function changeSNXXTimeframe(
     );
 
 
-    // Start live websocket
-
     startSNXXChartWS(
         interval
     );
@@ -1760,9 +3201,6 @@ async function changeSNDKBTimeframe(
     interval
 ) {
 
-
-    // Stop old websocket
-
     if (
         sndkbChartWS !== null
     ) {
@@ -1771,8 +3209,6 @@ async function changeSNDKBTimeframe(
 
     }
 
-
-    // Load historical data
 
     await loadKlines(
 
@@ -1790,8 +3226,6 @@ async function changeSNDKBTimeframe(
 
     );
 
-
-    // Start live websocket
 
     startSNDKBChartWS(
         interval
